@@ -299,6 +299,14 @@
     color: var(--ink-soft);
   }
 
+  .footer-row a {
+    text-decoration: none;
+  }
+
+  .footer-row a:hover {
+    color: var(--brand);
+  }
+
   @media (max-width: 620px) {
     .reasons {
       grid-template-columns: 1fr;
@@ -332,16 +340,30 @@
   <section class="hero">
     <div class="hero-image">
       <svg viewBox="0 0 640 320" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <radialGradient id="heroBg" cx="50%" cy="40%" r="68%">
+            <stop offset="0%" stop-color="#F2F5EF"/>
+            <stop offset="100%" stop-color="#E4E9E1"/>
+          </radialGradient>
+          <linearGradient id="toothFill" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0%" stop-color="#FFFFFF"/>
+            <stop offset="100%" stop-color="#F3F1EA"/>
+          </linearGradient>
+        </defs>
         <rect width="640" height="320" fill="#EEF1EC"/>
-        <circle cx="320" cy="160" r="150" fill="#E4E9E1"/>
-        <path d="M320 95C296 95 278 111 278 138C278 168 289 200 296 222C300 235 305 252 313 252.5C320 253 322 236 324 222C326 210 327 200 326 190C327 200 328 210 330 222C332 236 334 253 341 252.5C349 252 354 235 358 222C365 200 376 168 376 138C376 111 358 95 334 95C329 95 325 95.5 320 96.5C315 95.5 311 95 320 95Z" fill="none" stroke="#2F4A3E" stroke-width="2.4" stroke-linejoin="round"/>
-        <circle cx="196" cy="98" r="3" fill="#C9A876"/>
-        <circle cx="452" cy="230" r="3" fill="#C9A876"/>
-        <circle cx="470" cy="90" r="2" fill="#2F4A3E" opacity="0.4"/>
-        <circle cx="170" cy="235" r="2" fill="#2F4A3E" opacity="0.4"/>
+        <circle cx="320" cy="160" r="148" fill="url(#heroBg)"/>
+        <circle cx="320" cy="160" r="148" fill="none" stroke="#C9A876" stroke-width="1" stroke-dasharray="1 7" opacity="0.55"/>
+        <path d="M320,104C296,104 276,119 273,145C270,173 279,201 288,223C293,236 299,252 309,252.5C317,253 319.5,236 320.5,221C320.7,215 320.8,209 320,203C319.2,209 319.3,215 319.5,221C320.5,236 323,253 331,252.5C341,252 347,236 352,223C361,201 370,173 367,145C364,119 344,104 320,104Z" fill="url(#toothFill)" stroke="#2F4A3E" stroke-width="2.2" stroke-linejoin="round"/>
+        <path d="M296,128C300,120 310,115 320,115" stroke="#FFFFFF" stroke-width="4" stroke-linecap="round" opacity="0.8"/>
+        <g stroke="#C9A876" stroke-width="1.4" stroke-linecap="round">
+          <path d="M470,93L470,103M465,98L475,98"/>
+          <path d="M178,230L178,238M174,234L182,234"/>
+        </g>
+        <circle cx="205" cy="103" r="2.5" fill="#C9A876"/>
+        <circle cx="448" cy="222" r="2.5" fill="#2F4A3E" opacity="0.35"/>
       </svg>
     </div>
-    <h1>Tu sonrisa merece una <span class="accent">cita hoy</span>, no algún día.</h1>
+    <h1>Tu sonrisa merece brillar <span class="accent">hoy</span>, no algún día.</h1>
     <p>Odontología general y estética en un espacio pensado para que salgas más tranquilo de lo que llegaste. Agenda en menos de un minuto.</p>
     <div class="hero-cta">
       <a href="#agendar" class="btn-primary">Agendar mi cita</a>
@@ -447,7 +469,8 @@
     <div class="footer-row">
       <span>Sonrisa Imperial</span>
       <span>Av. Providencia 1234, Santiago</span>
-      <span>+56 2 2345 6789</span>
+      <a href="https://wa.me/56940449874?text=Hola%2C%20quiero%20agendar%20una%20cita%20en%20Sonrisa%20Imperial" target="_blank" rel="noopener">WhatsApp +56 9 4044 9874</a>
+      <a href="mailto:mint.murrayinteriordesign@gmail.com">mint.murrayinteriordesign@gmail.com</a>
     </div>
   </div>
 </footer>
