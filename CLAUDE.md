@@ -25,11 +25,15 @@ Landing page para la clínica dental **Sonrisa Imperial**. Su **único objetivo 
 - **El formulario no envía datos a ningún lado.** Solo muestra una confirmación en pantalla. Falta conectarlo a algo real (correo, WhatsApp o una base de datos).
 - La dirección, el teléfono y el texto "+12 años" son de ejemplo: hay que confirmarlos con la clínica.
 - Dominio propio: por definir (p. ej. sonrisaimperial.cl).
-- Falta decidir cómo se harán las ediciones futuras: (1) pedirle los cambios a Claude y redesplegar, (2) conectar a GitHub con despliegue automático, o (3) un panel /admin simple con una base de datos liviana (p. ej. Vercel KV).
+- Panel de edición futuro: por ahora las ediciones se hacen pidiéndole los cambios a Claude, que commitea y pushea a `main` (auto-deploy). Más adelante se podría evaluar un panel `/admin` con una base de datos liviana (p. ej. Vercel KV) si se necesita.
+
+## Repositorio
+- GitHub: https://github.com/mintmurrayinteriordesign-create/sonrisa-imperial (rama `main`)
+- Git y GitHub CLI (`gh`) están instalados localmente y autenticados como `mintmurrayinteriordesign-create`.
 
 ## Despliegue (Vercel)
 - Producción: https://sonrisa-imperial-a-team-7bdf.vercel.app
 - Equipo de Vercel: `a-team-7bdf` (teamId `team_hcJPJVl19sU1x6qeBkGhJdFL`), proyecto: `sonrisa-imperial`
-- Hoy se despliega **sin repositorio Git**, subiendo los archivos directo (contenido inline, `name: sonrisa-imperial`, `target: production`).
-- El token del conector de Vercel no tiene permiso de lectura sobre ese equipo (da 403 al listar o leer despliegues). Para confirmar el estado, revisar el dashboard de Vercel directamente.
-- Si se conecta a GitHub, Vercel publicará solo con cada push a `main`.
+- **Auto-deploy activo:** el repo de GitHub está conectado al proyecto (Settings → Git). Cada `git push` a `main` dispara un deploy automático a producción.
+- Login a la cuenta de Vercel del equipo: usar "Continue with Email" con el correo de la clínica — la opción "Continue with GitHub" lleva a una cuenta distinta (personal, ligada a `mintmurrayinteriordesign-create`), no al equipo `a-team-7bdf`.
+- El token del conector MCP de Vercel no tiene permiso de lectura sobre ese equipo (da 403 al listar o leer despliegues/proyectos). Para confirmar el estado de un deploy, revisar el dashboard de Vercel directamente.
