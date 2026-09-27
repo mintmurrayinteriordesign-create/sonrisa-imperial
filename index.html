@@ -1,0 +1,483 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sonrisa Imperial — Agenda tu cita</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #FAF8F5;
+    --ink: #1C1B19;
+    --ink-soft: #55534E;
+    --brand: #2F4A3E;
+    --brand-light: #3E6151;
+    --gold: #C9A876;
+    --line: #E8E4DD;
+    --card: #FFFFFF;
+  }
+
+  * { box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--ink);
+    font-family: 'Inter', sans-serif;
+    line-height: 1.55;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  h1, h2, h3 {
+    font-family: 'Fraunces', serif;
+    font-weight: 500;
+    letter-spacing: -0.01em;
+    margin: 0;
+  }
+
+  a { color: inherit; }
+
+  .wrap {
+    max-width: 640px;
+    margin: 0 auto;
+    padding: 0 28px;
+  }
+
+  header {
+    padding: 32px 0 0;
+  }
+
+  .brand-mark {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .brand-mark svg { flex-shrink: 0; }
+
+  .brand-name {
+    font-family: 'Fraunces', serif;
+    font-size: 19px;
+    font-weight: 500;
+    color: var(--brand);
+  }
+
+  .hero {
+    padding: 48px 0 48px;
+    text-align: left;
+  }
+
+  .hero-image {
+    width: 100%;
+    max-height: 320px;
+    border-radius: 6px;
+    overflow: hidden;
+    margin-bottom: 40px;
+    background: linear-gradient(135deg, #EEF1EC 0%, #F7F4EE 100%);
+  }
+
+  .hero-image svg {
+    display: block;
+    width: 100%;
+    height: auto;
+  }
+
+  .hero h1 {
+    font-size: clamp(34px, 6vw, 48px);
+    line-height: 1.12;
+    color: var(--ink);
+    max-width: 15ch;
+  }
+
+  .hero .accent {
+    color: var(--brand);
+    font-style: italic;
+  }
+
+  .hero p {
+    margin: 22px 0 0;
+    font-size: 17px;
+    color: var(--ink-soft);
+    max-width: 46ch;
+  }
+
+  .hero-cta {
+    margin-top: 32px;
+    display: flex;
+    gap: 14px;
+    align-items: center;
+    flex-wrap: wrap;
+  }
+
+  .btn-primary {
+    background: var(--brand);
+    color: #fff;
+    border: none;
+    padding: 15px 28px;
+    border-radius: 3px;
+    font-family: 'Inter', sans-serif;
+    font-size: 15.5px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background 0.15s ease;
+    text-decoration: none;
+    display: inline-block;
+  }
+
+  .btn-primary:hover { background: var(--brand-light); }
+
+  .trust-line {
+    font-size: 14px;
+    color: var(--ink-soft);
+  }
+
+  .trust-line strong { color: var(--ink); font-weight: 600; }
+
+  .divider {
+    border: none;
+    border-top: 1px solid var(--line);
+    margin: 0;
+  }
+
+  .reasons {
+    padding: 56px 0;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 28px;
+  }
+
+  .reason h3 {
+    font-size: 17px;
+    color: var(--ink);
+    margin-bottom: 8px;
+  }
+
+  .reason p {
+    font-size: 14.5px;
+    color: var(--ink-soft);
+    margin: 0;
+  }
+
+  .reason-icon {
+    width: 34px;
+    height: 34px;
+    margin-bottom: 14px;
+  }
+
+  .booking {
+    padding: 56px 0 80px;
+  }
+
+  .booking-head {
+    margin-bottom: 28px;
+  }
+
+  .booking-head h2 {
+    font-size: 28px;
+    color: var(--ink);
+  }
+
+  .booking-head p {
+    margin: 10px 0 0;
+    color: var(--ink-soft);
+    font-size: 15px;
+  }
+
+  form {
+    background: var(--card);
+    border: 1px solid var(--line);
+    border-radius: 6px;
+    padding: 32px;
+  }
+
+  .field {
+    margin-bottom: 20px;
+  }
+
+  .field:last-of-type { margin-bottom: 0; }
+
+  label {
+    display: block;
+    font-size: 13.5px;
+    font-weight: 500;
+    color: var(--ink);
+    margin-bottom: 7px;
+  }
+
+  input, select {
+    width: 100%;
+    padding: 12px 14px;
+    border: 1px solid var(--line);
+    border-radius: 4px;
+    font-family: 'Inter', sans-serif;
+    font-size: 15px;
+    color: var(--ink);
+    background: var(--bg);
+    transition: border-color 0.15s ease;
+  }
+
+  input:focus, select:focus {
+    outline: none;
+    border-color: var(--brand);
+  }
+
+  .field-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+  }
+
+  .submit-row {
+    margin-top: 28px;
+  }
+
+  .btn-submit {
+    width: 100%;
+    background: var(--brand);
+    color: #fff;
+    border: none;
+    padding: 16px;
+    border-radius: 4px;
+    font-family: 'Inter', sans-serif;
+    font-size: 16px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background 0.15s ease;
+  }
+
+  .btn-submit:hover { background: var(--brand-light); }
+
+  .form-note {
+    margin-top: 14px;
+    font-size: 13px;
+    color: var(--ink-soft);
+    text-align: center;
+  }
+
+  .confirmation {
+    display: none;
+    background: var(--card);
+    border: 1px solid var(--line);
+    border-radius: 6px;
+    padding: 40px 32px;
+    text-align: center;
+  }
+
+  .confirmation.show { display: block; }
+
+  .confirmation svg {
+    margin-bottom: 16px;
+  }
+
+  .confirmation h3 {
+    font-size: 21px;
+    margin-bottom: 8px;
+  }
+
+  .confirmation p {
+    color: var(--ink-soft);
+    font-size: 15px;
+    margin: 0;
+  }
+
+  footer {
+    border-top: 1px solid var(--line);
+    padding: 28px 0 40px;
+  }
+
+  .footer-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 12px;
+    font-size: 13.5px;
+    color: var(--ink-soft);
+  }
+
+  @media (max-width: 620px) {
+    .reasons {
+      grid-template-columns: 1fr;
+      gap: 32px;
+    }
+    .field-row {
+      grid-template-columns: 1fr;
+      gap: 0;
+    }
+    form { padding: 26px 22px; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    * { transition: none !important; }
+  }
+</style>
+</head>
+<body>
+
+<div class="wrap">
+  <header>
+    <div class="brand-mark">
+      <svg width="30" height="30" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M15 4C11.5 4 9 6.2 9 10.5C9 13.8 9.9 17.3 10.6 20.1C11.1 22.1 11.9 24.8 13.2 24.9C14.4 25 14.6 22.8 14.8 21.1C15 19.6 15.1 18.3 15 17C14.9 18.3 15 19.6 15.2 21.1C15.4 22.8 15.6 25 16.8 24.9C18.1 24.8 18.9 22.1 19.4 20.1C20.1 17.3 21 13.8 21 10.5C21 6.2 18.5 4 15 4Z" stroke="#2F4A3E" stroke-width="1.4" stroke-linejoin="round"/>
+      </svg>
+      <span class="brand-name">Sonrisa Imperial</span>
+    </div>
+  </header>
+
+  <section class="hero">
+    <div class="hero-image">
+      <svg viewBox="0 0 640 320" xmlns="http://www.w3.org/2000/svg">
+        <rect width="640" height="320" fill="#EEF1EC"/>
+        <circle cx="320" cy="160" r="150" fill="#E4E9E1"/>
+        <path d="M320 95C296 95 278 111 278 138C278 168 289 200 296 222C300 235 305 252 313 252.5C320 253 322 236 324 222C326 210 327 200 326 190C327 200 328 210 330 222C332 236 334 253 341 252.5C349 252 354 235 358 222C365 200 376 168 376 138C376 111 358 95 334 95C329 95 325 95.5 320 96.5C315 95.5 311 95 320 95Z" fill="none" stroke="#2F4A3E" stroke-width="2.4" stroke-linejoin="round"/>
+        <circle cx="196" cy="98" r="3" fill="#C9A876"/>
+        <circle cx="452" cy="230" r="3" fill="#C9A876"/>
+        <circle cx="470" cy="90" r="2" fill="#2F4A3E" opacity="0.4"/>
+        <circle cx="170" cy="235" r="2" fill="#2F4A3E" opacity="0.4"/>
+      </svg>
+    </div>
+    <h1>Tu sonrisa merece una <span class="accent">cita hoy</span>, no algún día.</h1>
+    <p>Odontología general y estética en un espacio pensado para que salgas más tranquilo de lo que llegaste. Agenda en menos de un minuto.</p>
+    <div class="hero-cta">
+      <a href="#agendar" class="btn-primary">Agendar mi cita</a>
+      <span class="trust-line"><strong>+12 años</strong> cuidando sonrisas</span>
+    </div>
+  </section>
+</div>
+
+<hr class="divider">
+
+<div class="wrap">
+  <div class="reasons">
+    <div class="reason">
+      <svg class="reason-icon" viewBox="0 0 34 34" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="17" cy="17" r="15" stroke="#C9A876" stroke-width="1.4"/>
+        <path d="M11 17.5L14.8 21L23 12.5" stroke="#2F4A3E" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+      <h3>Confirmación inmediata</h3>
+      <p>Sin llamadas ni esperas. Eliges tu horario y quedas agendado al instante.</p>
+    </div>
+    <div class="reason">
+      <svg class="reason-icon" viewBox="0 0 34 34" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M17 5V17L24 21" stroke="#2F4A3E" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+        <circle cx="17" cy="17" r="15" stroke="#C9A876" stroke-width="1.4"/>
+      </svg>
+      <h3>Horarios flexibles</h3>
+      <p>Atendemos de lunes a sábado, con espacios en la mañana y al final de la tarde.</p>
+    </div>
+    <div class="reason">
+      <svg class="reason-icon" viewBox="0 0 34 34" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M17 5C11.5 5 8 9 8 14C8 20 13 24 17 29C21 24 26 20 26 14C26 9 22.5 5 17 5Z" stroke="#2F4A3E" stroke-width="1.6" stroke-linejoin="round"/>
+        <circle cx="17" cy="14" r="3.2" stroke="#C9A876" stroke-width="1.4"/>
+      </svg>
+      <h3>Un solo lugar</h3>
+      <p>Diagnóstico, limpieza y tratamientos estéticos bajo el mismo techo, sin derivaciones.</p>
+    </div>
+  </div>
+</div>
+
+<hr class="divider">
+
+<div class="wrap">
+  <section class="booking" id="agendar">
+    <div class="booking-head">
+      <h2>Agenda tu cita</h2>
+      <p>Completa tus datos y te confirmamos por WhatsApp o correo en menos de 24 horas.</p>
+    </div>
+
+    <form id="bookingForm">
+      <div class="field">
+        <label for="name">Nombre completo</label>
+        <input type="text" id="name" name="name" placeholder="Tu nombre y apellido" required>
+      </div>
+
+      <div class="field-row">
+        <div class="field">
+          <label for="phone">Teléfono</label>
+          <input type="tel" id="phone" name="phone" placeholder="+56 9 1234 5678" required>
+        </div>
+        <div class="field">
+          <label for="email">Correo</label>
+          <input type="email" id="email" name="email" placeholder="tucorreo@ejemplo.com" required>
+        </div>
+      </div>
+
+      <div class="field-row">
+        <div class="field">
+          <label for="date">Fecha preferida</label>
+          <input type="date" id="date" name="date" required>
+        </div>
+        <div class="field">
+          <label for="service">Motivo de consulta</label>
+          <select id="service" name="service" required>
+            <option value="" disabled selected>Selecciona una opción</option>
+            <option value="limpieza">Limpieza dental</option>
+            <option value="revision">Revisión general</option>
+            <option value="estetica">Estética dental</option>
+            <option value="urgencia">Urgencia</option>
+            <option value="otro">Otro</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="submit-row">
+        <button type="submit" class="btn-submit">Confirmar solicitud</button>
+      </div>
+      <p class="form-note">No se realiza ningún cobro al agendar.</p>
+    </form>
+
+    <div class="confirmation" id="confirmation">
+      <svg width="44" height="44" viewBox="0 0 44 44" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="22" cy="22" r="20" stroke="#2F4A3E" stroke-width="1.6"/>
+        <path d="M14 22.5L19.5 28L30 16" stroke="#2F4A3E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+      <h3 id="confirmName">Listo, quedaste agendado.</h3>
+      <p id="confirmDetail">Te contactaremos pronto para confirmar el horario.</p>
+    </div>
+  </section>
+</div>
+
+<footer>
+  <div class="wrap">
+    <div class="footer-row">
+      <span>Sonrisa Imperial</span>
+      <span>Av. Providencia 1234, Santiago</span>
+      <span>+56 2 2345 6789</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+  const form = document.getElementById('bookingForm');
+  const confirmation = document.getElementById('confirmation');
+  const confirmDetail = document.getElementById('confirmDetail');
+
+  form.addEventListener('submit', function (e) {
+    e.preventDefault();
+    const name = document.getElementById('name').value.trim();
+    const date = document.getElementById('date').value;
+
+    let detail = 'Te contactaremos pronto para confirmar el horario.';
+    if (date) {
+      const [y, m, d] = date.split('-');
+      const meses = ['enero','febrero','marzo','abril','mayo','junio','julio','agosto','septiembre','octubre','noviembre','diciembre'];
+      detail = `Te contactaremos para confirmar tu cita del ${parseInt(d)} de ${meses[parseInt(m) - 1]}.`;
+    }
+
+    document.getElementById('confirmName').textContent = name
+      ? `Gracias, ${name.split(' ')[0]}. Quedaste agendado.`
+      : 'Listo, quedaste agendado.';
+    confirmDetail.textContent = detail;
+
+    form.style.display = 'none';
+    confirmation.classList.add('show');
+  });
+</script>
+
+</body>
+</html>
